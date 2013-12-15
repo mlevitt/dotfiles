@@ -4,10 +4,10 @@
 [hub]
         protocol = https
 [user]
-        name = mlevitt
-        email = mark.s.levitt@gmail.com
+        name = Mark Levitt
+        email = mark.levitt@comcast.net
 [credential]
-        helper = osxkeychain
+        helper = /opt/boxen/bin/boxen-git-credential
 [alias]
         promote = !$ZSH/bin/git-promote
 	wtf = !git-wtf
@@ -61,14 +61,18 @@
         branch = auto
         ui = auto
 [core]
-        excludesfile = ~/.gitignore
+        excludesfile = /opt/boxen/config/git/gitignore
         editor = vim
 [apply]
         whitespace = nowarn
 [mergetool]
         keepBackup = false
 [difftool]
-        prompt = false
+    prompt = false
+
+[difftool "default-difftool"]
+    cmd = meld $LOCAL $REMOTE
+    prompt = false
 [help]
         autocorrect = 1
 [push]

@@ -1,4 +1,89 @@
-syntax on
+filetype off
+filetype plugin indent on
 
-" Wrap gitcommit file types at the appropriate length
-filetype indent plugin on
+set nocompatible
+
+:filetype plugin on
+:set modeline
+:set hlsearch
+:nnoremap <F5> :buffers<CR>:buffer<Space>
+
+set tabstop=2
+set shiftwidth=2
+set softtabstop=2
+set expandtab
+
+set encoding=utf-8
+set scrolloff=3
+set autoindent
+set showmode
+set showcmd
+set hidden
+set wildmenu
+set wildmode=list:longest
+set visualbell
+set cursorline
+set ttyfast
+set ruler
+set backspace=indent,eol,start
+set laststatus=2
+set undofile
+set backupdir=~/vimtmpdir,.
+set directory=~/vimtmpdir,.
+set nobackup
+
+let mapleader = ","
+
+nnoremap / /\v
+vnoremap / /\v
+set ignorecase
+set smartcase
+set gdefault
+set incsearch
+set showmatch
+set hlsearch
+nnoremap <leader><space> :nohlsearch<cr>
+nnoremap <tab> %
+vnoremap <tab> %
+
+set wrap
+set textwidth=79
+set formatoptions=qrn1
+set colorcolumn=85
+
+set list
+set listchars=tab:▸\ ,eol:¬
+
+" write on focus change
+autocmd BufLeave,FocusLost * silent! wall
+map <leader>, :w<CR>
+
+" ,w removes trailing whitespace
+nnoremap <leader>W :%s/\s\+$//<cr>:let @/=''<CR>
+
+" jj is the new escape key
+inoremap jj <ESC>
+
+" semicolon is colon!!
+nnoremap ; :
+
+" Clear search on <cr>
+nmap <silent> ,/ :nohlsearch<CR>
+
+" ,ev opens a split to edit .vimrc
+nnoremap <leader>ev <C-w><C-v><C-l>:e $MYVIMRC<cr>
+
+" use ctrl+motion to change splits
+nnoremap <C-h> <C-w>h
+nnoremap <C-j> <C-w>j
+nnoremap <C-k> <C-w>k
+nnoremap <C-l> <C-w>l
+
+map <C-n> :NERDTreeToggle<CR>
+
+highlight ExtraWhitespace ctermbg=red guibg=red
+match ExtraWhitespace /\s\+$/
+autocmd BufWinEnter * match ExtraWhitespace /\s\+$/
+autocmd InsertEnter * match ExtraWhitespace /\s\+\%#\@<!$/
+autocmd InsertLeave * match ExtraWhitespace /\s\+$/
+autocmd BufWinLeave * call clearmatches()
