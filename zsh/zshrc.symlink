@@ -37,4 +37,5 @@ do
   source $file
 done
 
+set +o ignoreeof
 unset config_files
